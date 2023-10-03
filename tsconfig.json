@@ -16,6 +16,9 @@
       "env/*": [
         "./src/env/*"
       ],
+      "GraphQL/*": [
+        "./src/GraphQL/*"
+      ],
       "helpers/*": [
         "./src/helpers/*"
       ],
@@ -34,8 +37,8 @@
       "theme/*": [
         "./src/theme/*"
       ],
-      "types/*": [
-        "./src/types/*"
+      "Types/*": [
+        "./src/Types/*"
       ]
     }
   }

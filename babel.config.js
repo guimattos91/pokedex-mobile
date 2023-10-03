@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(true);
   return {
     presets: ['babel-preset-expo'],
@@ -11,17 +11,19 @@ module.exports = function(api) {
             components: './src/components',
             contexts: './src/contexts',
             env: './src/env',
+            GraphQL: './src/GraphQL',
             helpers: './src/helpers',
             hooks: './src/hooks',
             routes: './src/routes',
             screens: './src/screens',
             services: './src/services',
             theme: './src/theme',
-            types: './src/types',
+            Types: './src/Types',
           },
           extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
         },
       ],
+      ["module:react-native-dotenv"],
     ],
   };
 };

@@ -1,0 +1,2 @@
+  API_BASE_URL='https://beta.pokeapi.co/graphql/v1beta'
+  POKEAPI_IMAGE_URL='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'
