@@ -64,6 +64,7 @@
           "module",
           "/^assets/",
           "/^components/",
+          "/^Config/",
           "/^contexts/",
           "/^env/",
           "/^GraphQL/",

@@ -13,6 +13,9 @@
       "contexts/*": [
         "./src/contexts/*"
       ],
+      "Config/*": [
+        "./src/Config/*"
+      ],
       "env/*": [
         "src/Config/*"
       ],

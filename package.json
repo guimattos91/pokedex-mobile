@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^6.9.14",
     "expo": "~49.0.13",
     "expo-status-bar": "~1.6.0",
+    "expo-updates": "~0.18.14",
     "graphql": "^16.8.1",
     "lottie-react-native": "5.1.6",
     "polished": "^4.2.2",

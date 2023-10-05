@@ -33,6 +33,12 @@
         "projectId": "070b1bb1-c847-4622-920d-f7b42b761f06"
       }
     },
-    "owner": "guimattos91"
+    "owner": "guimattos91",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/070b1bb1-c847-4622-920d-f7b42b761f06"
+    }
   }
 }

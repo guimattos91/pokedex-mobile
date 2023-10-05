@@ -10,6 +10,7 @@ module.exports = function (api) {
             assets: './src/assets',
             components: './src/components',
             contexts: './src/contexts',
+            Config: './src/Config',
             env: './src/env',
             GraphQL: './src/GraphQL',
             helpers: './src/helpers',
