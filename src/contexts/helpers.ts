@@ -1,4 +1,4 @@
-import { POKEAPI_IMAGE_URL } from '@env';
+import { Config } from 'env/index';
 import { PokemonQueryResultsArrayType, PokemonType } from 'Types/PokemonsType';
 
 export const calcFemaleGenderRatePercent = (value: number): number => {
@@ -31,7 +31,7 @@ export const normalizePokemonsQueryResults = (
     },
     description: item?.specy?.descriptions?.[0]?.text ?? undefined,
     types: item.types.data.map((type) => type.type.name),
-    image: `${POKEAPI_IMAGE_URL.concat(String(item.id))}.png` ?? undefined,
+    image: `${Config.imageAPI.concat(String(item.id))}.png` ?? undefined,
     move: item.moves?.[0]?.move?.name ?? undefined,
     stats:
       item.stats?.map((s) => ({

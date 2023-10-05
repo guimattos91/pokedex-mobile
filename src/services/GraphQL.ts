@@ -1,8 +1,8 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { API_BASE_URL } from '@env';
+import { Config } from 'src/Config';
 
 const GraphQLClient = new ApolloClient({
-  uri: API_BASE_URL,
+  uri: Config.baseUrl,
   cache: new InMemoryCache(),
 });
 

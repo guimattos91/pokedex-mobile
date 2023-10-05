@@ -14,7 +14,7 @@
         "./src/contexts/*"
       ],
       "env/*": [
-        "./src/env/*"
+        "src/Config/*"
       ],
       "GraphQL/*": [
         "./src/GraphQL/*"

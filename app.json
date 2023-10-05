@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "pokemon-mobile",
-    "slug": "pokemon-mobile",
+    "slug": "pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "y"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.guimattos91.pokedex"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "070b1bb1-c847-4622-920d-f7b42b761f06"
+      }
+    },
+    "owner": "guimattos91"
   }
 }
