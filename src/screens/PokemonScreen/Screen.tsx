@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import {
   Entypo,
   FontAwesome5,
@@ -22,6 +22,7 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { normalizePokemonsQueryResults } from 'contexts/helpers';
 import { usePokemon } from 'contexts/PokemonContext';
 import { pokemonColor, unslugify } from 'helpers/index';
 import { RootStackParamListType } from 'routes/index';
@@ -34,29 +35,26 @@ const imageWidth = Dimensions.get('screen').width * 0.5;
 
 const Screen: React.FC<BaseScreenType> = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
-  const {
-    pokemon: requestPokemon,
-    fetchPokemon,
-    setPokemon: setRequestPokemon,
-  } = usePokemon();
+  const { fetchPokemon } = usePokemon();
   const [pokemon, setPokemon] = useState<PokemonType>(route.params.pokemon);
   const colors =
-    pokemonColor?.[pokemon.color as keyof typeof pokemonColor] ||
+    pokemonColor?.[pokemon?.color as keyof typeof pokemonColor] ||
     pokemonColor.black;
 
-  useEffect(() => {
-    if (requestPokemon) {
-      setPokemon(requestPokemon);
+  const handleFetchPokemon = useCallback(async () => {
+    const { data: pokemonData } = await fetchPokemon({
+      variables: { name: route.params.pokemon.name },
+    });
+
+    if (!!pokemonData && Array.isArray(pokemonData.results)) {
+      setPokemon(
+        normalizePokemonsQueryResults(pokemonData.results)?.[0] ?? null,
+      );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [requestPokemon]);
+  }, [fetchPokemon, route.params.pokemon.name]);
 
   useEffect(() => {
-    fetchPokemon({ variables: { name: route.params.pokemon.name } });
-
-    return () => {
-      setRequestPokemon(null);
-    };
+    handleFetchPokemon();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

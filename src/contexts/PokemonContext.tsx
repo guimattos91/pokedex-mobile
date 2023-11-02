@@ -29,6 +29,7 @@ interface IContextProps {
   hasMorePages: boolean;
   pokemons: PokemonType[];
   pokemon: PokemonType | null;
+  pokemonData: PokemonsQueryResultDataType | undefined;
   isFetchingMore: boolean;
   setPokemon: Dispatch<SetStateAction<PokemonType | null>>;
   fetchPokemon: LazyQueryExecFunction<
@@ -93,13 +94,13 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
   const [fetchPokemon, { data: pokemonData, loading: pokemonLoading }] =
     useLazyQuery<PokemonsQueryResultDataType>(GET_POKEMON_QUERY);
 
-  useEffect(() => {
-    if (!!pokemonData && Array.isArray(pokemonData.results)) {
-      setPokemon(
-        normalizePokemonsQueryResults(pokemonData.results)?.[0] ?? null,
-      );
-    }
-  }, [pokemonData]);
+  // useEffect(() => {
+  //   if (!!pokemonData && Array.isArray(pokemonData.results)) {
+  //     setPokemon(
+  //       normalizePokemonsQueryResults(pokemonData.results)?.[0] ?? null,
+  //     );
+  //   }
+  // }, [pokemonData]);
 
   useEffect(() => {
     if (offset > 0 && !isFetchingMore) {
@@ -107,6 +108,7 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset]);
+
   useEffect(() => {
     if (!!data && Array.isArray(data.results) && offset === 0) {
       setPokemons(normalizePokemonsQueryResults(data.results));
@@ -131,6 +133,7 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
           pokemons,
           pokemonLoading,
           pokemon,
+          pokemonData,
           hasMorePages,
           searchPokemons,
           isFetchingMore,
@@ -144,16 +147,15 @@ export const PokemonProvider: React.FC<IPokemonProviderProps> = ({
         [
           loading,
           pokemons,
-          pokemon,
           pokemonLoading,
+          pokemon,
+          pokemonData,
           hasMorePages,
           searchPokemons,
           isFetchingMore,
-          setPokemon,
           fetchNextPage,
           fetchPokemon,
           refetchPokemons,
-          setSearchPokemons,
           handleSetMore,
         ],
       )}
